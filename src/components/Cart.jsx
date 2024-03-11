@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 export const Cart = ({ cart, handleRemoveFromCart }) => {
 
-  const total = cart.reduce((x, y) => x+y.price * y.quantity, 0);
+  const total= useMemo(() => {
+    return cart.reduce((x, y) => x+y.price * y.quantity, 0);
+  }, [cart])
   if (cart.length === 0) return (
     <>
       <h1 className="cart-h1">Your Cart</h1>
